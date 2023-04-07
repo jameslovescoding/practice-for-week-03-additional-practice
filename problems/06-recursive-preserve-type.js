@@ -28,6 +28,21 @@ However, for bonus points try to solve it both with recursion and iteration.
 
 function recursivePreserveType(array) {
     // Your code here
+
+    function helper(arr, type) {
+        if (arr.length < 1) {
+            return [];
+        }
+        if (typeof arr[0] === type) {
+            return [arr[0], ...helper(arr.slice(1), type)];
+        } else {
+            return helper(arr.slice(1), type);
+        }
+    }
+
+    return function filtered(type) {
+        return helper(array, type);
+    };
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

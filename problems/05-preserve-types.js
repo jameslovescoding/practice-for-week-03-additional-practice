@@ -27,7 +27,21 @@ console.log(preserveFunc2('boolean', 'string', 'undefined')); // prints [ undefi
 
 function preserveTypes(array) {
     // Your code here
+    return function filtered(...type) {
+        let newArr = [];
+        array.forEach((val) => {
+            if (type.includes(typeof val)) {
+                newArr.push(val);
+            }
+        });
+        return newArr;
+    };
 }
+
+// const preserveFunc2 = preserveTypes([2, undefined, 'world', { color: 'red' }, true, 3, [4, 5], 'hello', false]);
+// console.log(preserveFunc2('number')); // prints [2, 3]
+// console.log(preserveFunc2('object')); // prints [ { color: 'red' }, [4, 5] ];
+// console.log(preserveFunc2('boolean', 'string', 'undefined')); // prints [ undefined, 'world', true, 'hello', false ]
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {

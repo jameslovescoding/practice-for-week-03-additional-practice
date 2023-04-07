@@ -11,6 +11,21 @@
 
 function sort(nums) {
     // Your code here
+    if (nums.length <= 1) {
+        return nums;
+    }
+    //
+    let minVal = nums[0];
+    let minIndex = 0;
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] < minVal) {
+            minVal = nums[i];
+            minIndex = i;
+        }
+    }
+    let newNums = nums;
+    newNums.splice(minIndex, 1);
+    return [minVal, ...sort(newNums)];
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/

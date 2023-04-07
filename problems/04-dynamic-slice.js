@@ -2,11 +2,11 @@
 
     Write a function that accepts two numbers, and returns another function that accepts an array.
     The new function, when invoked, should return a copy of a portion of the array between the indices of
-    the arguments passed to the first function. Like the built in Array#slice, it should include the 
+    the arguments passed to the first function. Like the built in Array#slice, it should include the
 		"start" index and exclude the "end" index. Do not use the built-in Array#slice method.
 
     If the start index is less than 0, the returned function should slice from the beginning of the array.
-    Similarly if the end index is greater than the length of the array, the returned function should 
+    Similarly if the end index is greater than the length of the array, the returned function should
 		slice up to the end of the array. See below for examples.
 
     const slicer = dynamicSlice(1, 3);
@@ -21,6 +21,19 @@
 
 function dynamicSlice(start, end) {
     // Your code here
+    return function(arr) {
+      if (start < 0) {
+        start = 0;
+      }
+      if (end > arr.length) {
+        end = arr.length;
+      }
+      let newArr = [];
+      for (let i = start; i < end; i ++) {
+        newArr.push(arr[i]);
+      }
+      return newArr;
+    }
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
